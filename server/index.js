@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const controller = require('../database/index.js');
 
+app.use(express.static(__dirname + '/../client/dist'));
+
+
 app.get('/:id/api/products', (req, res) => {
   let productId = req.params.id;  //var productId = req.params.id;
   console.log('productID: ' + productId);
