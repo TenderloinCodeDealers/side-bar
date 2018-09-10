@@ -1,36 +1,31 @@
-// Note testing faker.js through console.log
-
-// Faker is a npm module; https://www.npmjs.com/package/faker
-var faker = require('faker');
-
-// For step 2's exporting to CSV file
-var csvWriter = require('csv-write-stream');
-var fs = require('fs');
-
 /*
-  Generate data for table 1, product table
+  About: generate data for table 1, products
+  The steps:
+  Step 1: generate n rows of product data; use helper functions
+  Step 2: after generating data, export to CSV file
 */
 
-// Step 1: generate n rows of product data; use helper functions
-// Step 2: after generating data, export somewhere; then load to MySQL (relational)
+// Step 1: generate data
 
-// Step 1
+// Note testing faker.js through console.log
+// Faker is a npm module; https://www.npmjs.com/package/faker
+const faker = require('faker');
 
 // Generate 100 products (each with 2 options, so 200 rows)
-var products = generateProductData(100);
+const products = generateProductData(100);
 // console.log(products);
 
 
 function generateProductData(n) {
-  var outputProducts = [];  // An array of objects
-  for (var i = 1; i <= n; i++) {
-    var product_id = i;
-    var category = getCategory(i);
-    var product_name = getProductName(category);
-    var expiration_time= faker.date.between('2018-09-10', '2018-09-21');  // Between 2 future dates
+  const outputProducts = [];  // An array of objects
+  for (let i = 1; i <= n; i++) {
+    let product_id = i;
+    let category = getCategory(i);
+    let product_name = getProductName(category);
+    let expiration_time= faker.date.between('2018-09-10', '2018-09-21');  // Between 2 future dates
 
-    for (var j = 1; j <= 2; j++) {  // 2 options per product
-      var newObj = {};
+    for (let j = 1; j <= 2; j++) {  // 2 options per product
+      let newObj = {};
 
       newObj.product_id = product_id;
       newObj.category = category;
@@ -48,7 +43,6 @@ function generateProductData(n) {
 };
 
 // Helper functions
-// var getCategory = function(int) {
 function getCategory(int) {
   if (int <= 50) {
     return 'Local';
@@ -71,7 +65,7 @@ function getProductOption(int) {
   }
 };
 // Use JS's Math method, for product_price and warranty cost
-// Not using faker.js: var product_price = faker.fake("{{commerce.price}}");
+// Not using faker.js: product_price = faker.fake("{{commerce.price}}");
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -95,24 +89,18 @@ function getWarrantyCost(category, option) {
 };
 
 
-// Step 2 (for scability): export to CSV file (or JSON file)
-// var writer = csvWriter({headers: ['product_id', 'category', 'product_name', 'expiration_time', 'product_option', 'product_price', 'warranty_cost']});
+// Step 2: export to CSV file (for scability), instead of JSON file
+const csvWriter = require('csv-write-stream');
+const fs = require('fs');
+
 writer = csvWriter();
 writer.pipe(fs.createWriteStream('products.csv'));
-for (var i = 0; i < products.length; i++) {
+for (let i = 0; i < products.length; i++) {
   writer.write(products[i]);
 }
-// writer.write(products[0]);
 writer.end();
 
 // module.exports.products = products;
 
-
-/*
-  Generate data for table 2, view table
-*/
-
-// Follow the same steps, as for table 1
-// [Todo] Do this over the weekend
 
 
