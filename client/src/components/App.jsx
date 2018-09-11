@@ -1,25 +1,15 @@
-// [Todo] Add a React form (as another component), for side-bar section
-// https://codepen.io/gaearon/pen/VmmPgp?editors=0010
-
 import React from 'react';
-
-// import $ from 'jquery';
-import axios from 'axios';
+import axios from 'axios';  // import $ from 'jquery';
+import PhotoCarousel from './PhotoCarousel.jsx';
 
 class App extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      // [Todo] Finish this
+      // [TBD] Add more state(s) here
       product: {}
-      // category: ''
 
     }
-  }
-
-  componentDidMount() {
-    // [Todo] Make id dynamic later, by adding selection to front end
-    this.getProducts(60);
   }
 
   // About method: get products data from server
@@ -40,10 +30,20 @@ class App extends React.Component{
     });
   }
 
+  // Search for deal, by product ID
+  handleSearch(value) {
+    this.getProducts(value);
+  }
+
   render(){
     return (
       <div>
-        Hi, App.jsx
+        <div>
+          <h3>Photo Carousel</h3>
+          {/* Note: do not use the first line below (from React's tutorial) */}
+          {/* <PhotoCarousel handleSearch={() => this.handleSearch.bind(this)} /> */}
+          <PhotoCarousel handleSearch={this.handleSearch.bind(this)} />
+        </div>
       </div>
     );
   }
