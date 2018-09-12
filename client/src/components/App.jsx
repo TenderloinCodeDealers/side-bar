@@ -1,6 +1,3 @@
-// [Todo] with CSS
-// Move sidebar to the right of photo carousel
-
 import React from 'react';
 import axios from 'axios';  // import $ from 'jquery';
 
@@ -56,15 +53,21 @@ class App extends React.Component{
 
   render(){
     return (
-      <div>
-        <div>
+      // Note: need to use "wrapper" as the className
+      <div className="wrapper">
+        <div className="rowDivider">
           <h3>Search Bar</h3>
           {/* Note: do not use the first line below (from React's tutorial) */}
           {/* <SearchBar handleSearch={() => this.handleSearch.bind(this)} /> */}
           <SearchBar handleSearch={this.handleSearch.bind(this)} />
+          <br></br><br></br>
         </div>
-        <br></br>
-        <div>
+
+        <div className="rowDivider">
+          <br></br>
+        </div>
+
+        <div className="columnDivider">
           <h3>Photo Carousel</h3>
           <PhotoCarousel productName={this.state.productName} />
         </div>
