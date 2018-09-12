@@ -4,47 +4,24 @@ class PhotoCarousel extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      value: '',
-      submittedValue: 0
+      // Note: no state for PhotoCarousel, as for my service repo
     }
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    alert('Submitted product ID');
-    // [TBD] Not sure to use 'const' or 'let' here
-    const intValue = parseInt(this.state.value);  // Convert value from type string to type number
-    this.setState({
-      submittedValue: intValue
-    });
-    this.props.handleSearch(this.state.value);  // Note: no need to convert to number; string works here
-    event.preventDefault();
-  }
 
   render(){
     let productInfo;
-    if (this.state.submittedValue >= 1 && this.state.submittedValue <=100) {  // If with valid value for product ID
-      // productInfo = <h5>Found product</h5>;
-      productInfo = <FoundProduct />;
-    } 
+
+    // Note: 'productInfo' needs to be a React component, to be returned
+    if (this.props.productName) {
+      productInfo = <FoundProduct productName={this.props.productName} />;  // productInfo = <h5>Found product</h5>;
+    } else {
+      productInfo = <NotFoundProduct />;
+    }
 
     return (
       <div>
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <label>
-            Enter product ID (between 1 and 100): 
-            <input type ="text" value={this.state.value} onChange={this.handleChange.bind(this)} />
-          </label>
-          <br></br>
-          <input type="submit" value="Submit" />
-        </form>
-      
-        <div>
-          {productInfo}
-        </div>
+        {productInfo}
       </div>
     );
   }
@@ -54,10 +31,16 @@ class PhotoCarousel extends React.Component{
 // A new component, per conditional rendering
 function FoundProduct(props) {
   return (
-    <p>Found product</p>
+    <p>Product name: {props.productName}</p>
+  );
+}
+// Another new component, per conditional rendering
+function NotFoundProduct(props) {
+  return (
+    <p>Product is not found!</p>
+    // alert('Product is not found!')  // alert does not work well here
   );
 }
 
-
-
 export default PhotoCarousel;
+
