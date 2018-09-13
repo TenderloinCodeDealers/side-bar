@@ -1,12 +1,12 @@
 import React from 'react';
-import axios from 'axios';  // import $ from 'jquery';
+import axios from 'axios'; // import $ from 'jquery';
 
 import SearchBar from './SearchBar.jsx';
 import PhotoCarousel from './PhotoCarousel.jsx';
 import SideBar from './SideBar.jsx';
 
 
-class App extends React.Component{
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,7 +18,7 @@ class App extends React.Component{
       option1Warranty: '',
       option2Price: '',
       option2Warranty: ''
-    }
+    };
   }
 
   // About method: get products data from server
@@ -26,24 +26,24 @@ class App extends React.Component{
     const context = this;
 
     // Note: use axios, for HTTP request, get
-    axios.get(`/${id}/api/products`)  // axios.get('/:id/api/products')
-    .then(function(response) {
-      // console.log(JSON.stringify(response));  // For debugging
-      context.setState({
-        // product: response.data[0],  // Product's 'Option 1' row
-        productName: response.data[0].product_name,
-        category: response.data[0].category,
-        expirationTime: response.data[0].expiration_time,
+    axios.get(`/${id}/api/products`) // axios.get('/:id/api/products')
+      .then(function(response) {
+        // console.log(JSON.stringify(response)); // For debugging
+        context.setState({
+          // product: response.data[0], // Product's 'Option 1' row
+          productName: response.data[0].product_name,
+          category: response.data[0].category,
+          expirationTime: response.data[0].expiration_time,
 
-        option1Price: response.data[0].product_price,
-        option1Warranty: response.data[0].warranty_cost,
-        option2Price: response.data[1].product_price,
-        option2Warranty: response.data[1].warranty_cost
+          option1Price: response.data[0].product_price,
+          option1Warranty: response.data[0].warranty_cost,
+          option2Price: response.data[1].product_price,
+          option2Warranty: response.data[1].warranty_cost
+        });
       })
-    })
-    .catch(function(error) {
-      console.log(error);
-    });
+      .catch(function(error) {
+        console.log(error);
+      });
   }
 
   // Search for deal, by product ID
@@ -51,12 +51,19 @@ class App extends React.Component{
     this.getProducts(value);
   }
 
-  render(){
+  render() {
     return (
       // Note: need to use "wrapper" as the className
       <div className="wrapper">
         <div className="rowDivider">
-          <h3>Search Bar</h3>
+          <h3>Welcome to Vourcher!</h3>
+        </div>
+        <div className="rowDivider">
+          <br></br>
+        </div>
+
+        <div className="rowDivider">
+          {/* <h3>Search Bar</h3> */}
           {/* Note: do not use the first line below (from React's tutorial) */}
           {/* <SearchBar handleSearch={() => this.handleSearch.bind(this)} /> */}
           <SearchBar handleSearch={this.handleSearch.bind(this)} />
@@ -68,12 +75,12 @@ class App extends React.Component{
         </div>
 
         <div className="columnDivider">
-          <h3>Photo Carousel</h3>
+          {/* <h3>Photo Carousel</h3> */}
           <PhotoCarousel productName={this.state.productName} />
         </div>
 
         <div>
-          <h3>SideBar</h3>
+          {/* <h3>Side Bar</h3> */}
           <SideBar
             category={this.state.category}
             expirationTime={this.state.expirationTime}

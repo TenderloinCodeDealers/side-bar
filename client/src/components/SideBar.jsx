@@ -15,6 +15,7 @@ class SideBar extends React.Component{
   render() {
     return (
       <div>
+        <h3>Side Bar</h3>
         <p>Expiration time: {this.props.expirationTime}</p>
 
         {/* Option 1 */}

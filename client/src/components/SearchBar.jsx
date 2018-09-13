@@ -25,10 +25,14 @@ class SearchBar extends React.Component{
   render() {
     return (
       <div>
+        <h3>Search Bar</h3>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <label>
-            Enter product ID:  
-            <input type ="text" value={this.state.value} onChange={this.handleChange.bind(this)} />
+            Enter product ID:
+              {/* Note: added id as 'productID', for testing with Jest/Enzyme  */}
+            <input id='productID' type ="text"
+                   value={this.state.value}
+                   onChange={this.handleChange.bind(this)} />
           </label>
           <input type="submit" value="Submit" />
         </form>

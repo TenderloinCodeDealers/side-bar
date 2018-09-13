@@ -21,6 +21,7 @@ class PhotoCarousel extends React.Component{
 
     return (
       <div>
+        <h3>Photo Carousel</h3>
         {productInfo}
       </div>
     );
