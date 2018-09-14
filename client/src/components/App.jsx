@@ -63,7 +63,6 @@ class App extends React.Component {
         </div>
 
         <div className="rowDivider">
-          {/* <h3>Search Bar</h3> */}
           {/* Note: do not use the first line below (from React's tutorial) */}
           {/* <SearchBar handleSearch={() => this.handleSearch.bind(this)} /> */}
           <SearchBar handleSearch={this.handleSearch.bind(this)} />
@@ -75,12 +74,10 @@ class App extends React.Component {
         </div>
 
         <div className="columnDivider">
-          {/* <h3>Photo Carousel</h3> */}
           <PhotoCarousel productName={this.state.productName} />
         </div>
 
         <div>
-          {/* <h3>Side Bar</h3> */}
           <SideBar
             category={this.state.category}
             expirationTime={this.state.expirationTime}
