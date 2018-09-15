@@ -41,7 +41,7 @@ class SideBar extends React.Component {
 				option2Price={this.props.option2Price}
 				handleChange={this.handleChange.bind(this)}
 				option1Warranty={this.props.option1Warranty}
-				option2Warranty={this.props.option2Warranty} 
+				option2Warranty={this.props.option2Warranty}
 			/>;
 		}
 
@@ -58,7 +58,7 @@ class SideBar extends React.Component {
 
 				<br></br>
 				<button onClick={this.handleClick}>
-          Buy
+					Buy
 				</button>
 			</div>
 		);
@@ -112,19 +112,19 @@ function BoxOptions(props) {
 	if (props.value === 'option2') {
 		price = <p>Option 2's price: ${props.option2Price}</p>;
 		warrantyLabel = <span>Add warranty for option 2 at ${props.option2Warranty}</span>;
-		warranty = <Checkbox label={warrantyLabel}/>;
+		warranty = <Checkbox label={warrantyLabel} />;
 	} else { // Note: option 1 is the default option
 		price = <p>Option 1's price: ${props.option1Price}</p>;
 		warrantyLabel = <span>Add warranty for option 1 at ${props.option1Warranty}</span>;
-		warranty = <Checkbox label={warrantyLabel}/>;
+		warranty = <Checkbox label={warrantyLabel} />;
 	}
 
 	return (
 		<div>
 			{price}
-      
+
 			<label>
-        Select your option:
+				Select your option:
 				<form>
 					<select onChange={(event) => props.handleChange(event.target.value)}>
 						<option value='option1'>Option 1</option>

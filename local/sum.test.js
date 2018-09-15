@@ -1,7 +1,7 @@
-const sum = require('./sum');
+import sum from './sum';
 
 // Note: both lines below work
 // test('add 1 + 2 to equal 3', () => {
 it('add 1 + 2 to equal 3', () => {
-  expect(sum(1, 2)).toBe(3);
+	expect(sum(1, 2)).toBe(3);
 });
