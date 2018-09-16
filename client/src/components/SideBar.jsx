@@ -152,4 +152,5 @@ function BoxOptions(props) {
   );
 }
 
-export default SideBar;
+// export default SideBar;
+export { SideBar, RadioOptions, BoxOptions, Checkbox };
