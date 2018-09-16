@@ -6,7 +6,7 @@ import axios from 'axios';
 
 import SearchBar from './other_components/SearchBar.jsx';
 import PhotoCarousel from './other_components/PhotoCarousel.jsx';
-import SideBar from './SideBar.jsx';
+import { SideBar } from './SideBar.jsx';
 
 class App extends React.Component {
   constructor(props) {
