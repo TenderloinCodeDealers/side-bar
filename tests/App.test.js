@@ -13,7 +13,6 @@
 //   ReactDOM.render(<App />, div);
 // });
 
-
 /*
   Way 2: test crashing, using Enzyme
   Note: setupTests.js file does not work; so the first 3 lines are pasted for every test
@@ -37,7 +36,3 @@ it('renders the welcome message', () => {
   const words = <h3>Welcome to Vourcher!</h3>;
   expect(wrapper).toContainReact(words); // Syntax with 'jest-enzyme'
 });
-
-
-
-

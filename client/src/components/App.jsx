@@ -4,8 +4,8 @@ import React from 'react';
 import axios from 'axios';
 // import $ from 'jquery';
 
-import SearchBar from './SearchBar.jsx';
-import PhotoCarousel from './PhotoCarousel.jsx';
+import SearchBar from './other_components/SearchBar.jsx';
+import PhotoCarousel from './other_components/PhotoCarousel.jsx';
 import SideBar from './SideBar.jsx';
 
 class App extends React.Component {
