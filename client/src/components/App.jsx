@@ -66,28 +66,28 @@ class App extends React.Component {
     return (
       // Note: need to use "wrapper" as the className
       <div className="wrapper">
-        <div className="rowDivider">
+        {/* <div className="rowDivider">
           <h3>Welcome to Vourcher!</h3>
         </div>
         <div className="rowDivider">
           <br />
-        </div>
+        </div> */}
 
-        <div className="rowDivider">
-          {/* Note: do not use the first line below (from React's tutorial) */}
-          {/* <SearchBar handleSearch={() => this.handleSearch.bind(this)} /> */}
-          <SearchBar handleSearch={this.handleSearch.bind(this)} />
+        {/* <div className="rowDivider"> */}
+        {/* Note: do not use the first line below (from React's tutorial) */}
+        {/* <SearchBar handleSearch={() => this.handleSearch.bind(this)} /> */}
+        {/* <SearchBar handleSearch={this.handleSearch.bind(this)} /> */}
+        {/* <br />
           <br />
-          <br />
-        </div>
+        </div> */}
 
-        <div className="rowDivider">
+        {/* <div className="rowDivider">
           <br />
-        </div>
+        </div> */}
 
-        <div className="columnDivider">
+        {/* <div className="columnDivider">
           <PhotoCarousel productName={this.state.productName} />
-        </div>
+        </div> */}
 
         <div>
           <SideBar

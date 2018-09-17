@@ -1,0 +1,21 @@
+/* @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400'); */
+
+body {
+  font-family: arial;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  /* grid-column-gap: 1em; */
+}
+.rowDivider {
+  border-bottom: 1px solid;
+}
+.columnDivider {
+  border-right: 1px solid;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+}
