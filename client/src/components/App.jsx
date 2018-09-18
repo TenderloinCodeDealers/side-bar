@@ -4,8 +4,9 @@ import React from 'react';
 import axios from 'axios';
 // import $ from 'jquery';
 
-import SearchBar from './other_components/SearchBar.jsx';
-import PhotoCarousel from './other_components/PhotoCarousel.jsx';
+// Newly removed other components, during integration with other modules
+// import SearchBar from './other_components/SearchBar.jsx';
+// import PhotoCarousel from './other_components/PhotoCarousel.jsx';
 import { SideBar } from './SideBar.jsx';
 
 class App extends React.Component {
@@ -58,9 +59,9 @@ class App extends React.Component {
 
   // Search for deal, by product
   // Note: search by ID is optional now, because 'getProducts(id)' is also added to component lifecycle
-  handleSearch(value) {
-    this.getProducts(value);
-  }
+  // handleSearch(value) {
+  //   this.getProducts(value);
+  // }
 
   render() {
     return (
@@ -97,6 +98,7 @@ class App extends React.Component {
             option1Warranty={this.state.option1Warranty}
             option2Price={this.state.option2Price}
             option2Warranty={this.state.option2Warranty}
+            productName={this.state.productName} // Newly added, during integration with other modules
           />
         </div>
       </div>
