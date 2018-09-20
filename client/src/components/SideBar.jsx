@@ -1,13 +1,58 @@
+// [TBD] Update DB: postpone expiration time by 1 week (or 2)
+// Note: CSS that is not working: AlignVertical (radio options)
+
 import React from 'react';
 
-// Working with semantic: Form and Radio for options; Checkbox for adding warranty (goods category only)
-import { Form, Radio, Checkbox } from 'semantic-ui-react'; // For options: use semantic
+// CSS: styled components
+import styled from 'styled-components';
 
-// For adding rating star
+// UI: add time left, with better look
+import TimeAgo from 'react-timeago';
+
+// UI: add UI components with Semantic
+// Note: not working with semantic: Dropdown (for optoins); Button; Rating
+import { Form, Radio, Checkbox } from 'semantic-ui-react'; // For options: use semantic
+// UI: add rating star
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee, faStar } from '@fortawesome/free-solid-svg-icons';
 
-// Not working with semantic: Dropdown (for optoins); Button; Rating
+const WrapperTop = styled.section`
+  display: grid;
+  width: 300px;
+  grid-template-columns: 150px 150px;
+  border-bottom: 2px solid #d3d3d3;
+`;
+const WrapperBottom = styled.section`
+  display: grid;
+  height: 200px;
+  width: 300px;
+  grid-template-rows: 120px 30px;
+  grid-row-gap: 50px;
+`;
+const BuyButton = styled.button`
+  background-color: #4caf50;
+  color: white;
+`;
+const RadioWrapper = styled.section`
+  display: grid;
+  grid-template-rows: 15px 60px 50px;
+  // grid-row-gap: 35px;
+`;
+const BoxWrapper = styled.section`
+  display: grid;
+  grid-template-rows: 15px 50px 20px;
+  grid-row-gap: 35px;
+`;
+const JustifyRight = styled.section`
+  justify-self: right;
+`;
+const FullWidthSelect = styled.select`
+  width: 100%;
+`;
+
+const AlignVertical = styled.section`
+  vertical-align: middle;
+`;
 
 class SideBar extends React.Component {
   constructor(props) {
@@ -61,18 +106,19 @@ class SideBar extends React.Component {
 
     return (
       <div>
-        <h3>Side Bar</h3>
+        <WrapperTop>
+          <div>
+            <span>Sales End: </span>
+            <TimeAgo date={this.props.expirationTime} />
+          </div>
 
-        {/* <FontAwesomeIcon icon={faStar} color="gold" /> */}
-        {rating}
-
-        <p>Product Category: {this.props.category}</p>
-        <p>Expiration time: {this.props.expirationTime}</p>
-
-        {options}
-
-        <br />
-        <button onClick={this.handleClick}>Buy</button>
+          <JustifyRight>{rating}</JustifyRight>
+        </WrapperTop>
+        <WrapperBottom>
+          <div>{options}</div>
+          {/* <button onClick={this.handleClick}>Buy</button> */}
+          <BuyButton onClick={this.handleClick}>Buy</BuyButton>
+        </WrapperBottom>
       </div>
     );
   }
@@ -89,28 +135,29 @@ function RadioOptions(props) {
   let price2 = <span>Option 2's price: ${props.option2Price}</span>;
   return (
     <Form>
-      {/* <p>Option 1's price: ${this.props.option1Price}</p> */}
-      <Form.Field>
-        <Radio
-          // label='Option 1 costs ${this.props.option1Price}'
-          label={price1}
-          name="radioGroup"
-          value="option1"
-          // checked={this.state.value === 'option1'}
-          // onChange={this.handleChange.bind(this)}
-          checked={props.value === 'option1'}
-          onChange={event => props.handleChange(event.target.value)}
-        />
-      </Form.Field>
-      <Form.Field>
-        <Radio
-          label={price2}
-          name="radioGroup"
-          value="option2"
-          checked={props.value === 'option2'}
-          onChange={event => props.handleChange(event.target.value)}
-        />
-      </Form.Field>
+      <RadioWrapper>
+        <div />
+        <Form.Field>
+          {/* <AlignVertical> */}
+          <Radio
+            label={price1}
+            name="radioGroup"
+            value="option1"
+            checked={props.value === 'option1'}
+            onChange={event => props.handleChange(event.target.value)}
+          />
+          {/* </AlignVertical> */}
+        </Form.Field>
+        <Form.Field>
+          <Radio
+            label={price2}
+            name="radioGroup"
+            value="option2"
+            checked={props.value === 'option2'}
+            onChange={event => props.handleChange(event.target.value)}
+          />
+        </Form.Field>
+      </RadioWrapper>
     </Form>
   );
 }
@@ -122,32 +169,34 @@ function BoxOptions(props) {
   let warrantyLabel;
 
   if (props.value === 'option2') {
-    price = <p>Option 2's price: ${props.option2Price}</p>;
+    price = <p>Price: ${props.option2Price}</p>;
     warrantyLabel = <span>Add warranty for option 2 at ${props.option2Warranty}</span>;
     warranty = <Checkbox label={warrantyLabel} />;
   } else {
     // Note: option 1 is the default option
-    price = <p>Option 1's price: ${props.option1Price}</p>;
+    price = <p>Price: ${props.option1Price}</p>;
     warrantyLabel = <span>Add warranty for option 1 at ${props.option1Warranty}</span>;
     warranty = <Checkbox label={warrantyLabel} />;
   }
 
   return (
     <div>
-      {price}
+      <BoxWrapper>
+        <div>{price}</div>
 
-      <label>
-        Select your option:
-        <form>
-          <select onChange={event => props.handleChange(event.target.value)}>
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-          </select>
-        </form>
-      </label>
+        <div>
+          <form>
+            {/* <select onChange={event => props.handleChange(event.target.value)}> */}
+            <FullWidthSelect onChange={event => props.handleChange(event.target.value)}>
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              {/* </select> */}
+            </FullWidthSelect>
+          </form>
+        </div>
 
-      <br />
-      {warranty}
+        <div>{warranty}</div>
+      </BoxWrapper>
     </div>
   );
 }

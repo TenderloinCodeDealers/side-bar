@@ -25,8 +25,10 @@
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-fontawesome": "^1.6.1",
+    "react-timeago": "^4.1.9",
     "save-dev": "^2.0.0",
-    "semantic-ui-react": "^0.82.5"
+    "semantic-ui-react": "^0.82.5",
+    "styled-components": "^3.4.9"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",

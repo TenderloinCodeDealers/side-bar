@@ -1,12 +1,11 @@
-/* @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400'); */
+/* @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400'); */ */
 
-body {
+/* body {
   font-family: arial;
 }
 .wrapper {
   display: grid;
   grid-template-columns: 60% 40%;
-  /* grid-column-gap: 1em; */
 }
 .rowDivider {
   border-bottom: 1px solid;
@@ -18,4 +17,9 @@ body {
 button {
   background-color: #4caf50;
   color: white;
+} */
+
+
+/* select {
+  width: 100%;
 }
