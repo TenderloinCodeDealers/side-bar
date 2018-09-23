@@ -9,13 +9,17 @@ CREATE TABLE IF NOT EXISTS products (
   category VARCHAR(10),
   product_name VARCHAR(50),
   -- expiration_time DATETIME,
-  expiration_time VARCHAR(50),  -- [Todo] Fix data type back to DATETIME, later
+  expiration_time VARCHAR(50),  -- [TBD] Fix data type back to DATETIME, later
   product_option VARCHAR(50),
   product_price INT,
-  warranty_cost VARCHAR(10)  -- [Todo] Fix data type back to INT, later
+  warranty_cost VARCHAR(10)  -- [TBD] Fix data type back to INT, later
 );
 
-LOAD DATA INFILE '/Users/huanl/Desktop/side-bar/database/products.csv' INTO TABLE products
+-- Note: use relative path
+-- LOAD DATA INFILE '/products.csv' INTO TABLE products
+
+-- Note: load CSV file does not work with Docker MySql container; so use mysqldump instead
+
 FIELDS TERMINATED BY ','
 -- ENCLOSED BY '"'
 LINES TERMINATED BY '\n'

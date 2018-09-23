@@ -38,8 +38,8 @@ class App extends React.Component {
     // Note: use axios, for HTTP request, get
     axios
       // Note: added port number '3004' to server url, for integration
-      .get(`http://localhost:3004/${id}/api/products`)
-      // .get(`/${id}/api/products`) // ES6's template literal
+      // .get(`http://localhost:3004/${id}/api/products`)
+      .get(`/${id}/api/products`) // ES6's template literal
       .then(function(response) {
         // console.log(JSON.stringify(response)); // For debugging
         context.setState({
