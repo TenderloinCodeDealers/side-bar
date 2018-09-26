@@ -32,8 +32,8 @@ app.get('/:id/api/products', (req, res) => {
   });
 });
 
-// const PORT = process.env.PORT || 3004; // For testing
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3004; // For testing
+// const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}.`);
 });

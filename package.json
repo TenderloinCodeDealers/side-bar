@@ -51,6 +51,7 @@
     "prettier": "^1.14.2",
     "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "^16.5.1",
+    "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^2.2.1"
   },
   "version": "1.0.0",

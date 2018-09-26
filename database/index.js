@@ -9,6 +9,7 @@ const mysql = require('mysql');
 // });
 
 // Note: use remote connection with EC2
+// [Todo] Add some protectino for my MySQL password as below
 const connection = mysql.createConnection({
   host: '18.191.153.175',
   port: '3306',
@@ -33,4 +34,3 @@ const getProduct = function(productID, callback) {
 };
 
 module.exports.getProduct = getProduct;
-~
